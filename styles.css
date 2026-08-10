@@ -8,12 +8,54 @@
   --ink: #f7f8f8;
   --muted: #8a8f98;
 }
+body.template-personal-brand-gallery-minimal {
+
+  color-scheme: light;
+  --accent: #0066cc;
+  --ambient: none;
+  --avatar-size: 136px;
+  --canvas: #f5f5f7;
+  --cta-bg: #0066cc;
+  --cta-ink: #ffffff;
+  --display-font: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --eyebrow-spacing: 0;
+  --eyebrow-transform: none;
+  --hairline: #e0e0e0;
+  --headline-leading: 1.07;
+  --headline-size: clamp(40px, 8vw, 68px);
+  --headline-weight: 650;
+  --ink: #1d1d1f;
+  --link-gap: 12px;
+  --link-grid: 1fr;
+  --link-padding: 16px 18px;
+  --muted: #6e6e73;
+  --on-accent: #ffffff;
+  --profile-bg: #ffffff;
+  --profile-border: 1px solid #f0f0f0;
+  --profile-padding: 28px 22px;
+  --radius-action: 999px;
+  --radius-avatar: 28px;
+  --radius-card: 18px;
+  --radius-panel: 28px;
+  --shell-padding: 48px 18px 34px;
+  --shell-width: 660px;
+  --surface: #ffffff;
+  --surface-2: #fafafc;
+}
 * { box-sizing: border-box; }
 body {
   background: var(--canvas);
   color: var(--ink);
   font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
+}
+body::before {
+  background: var(--ambient, none);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
 }
 a { color: inherit; }
 .campaign-banner {
@@ -35,8 +77,8 @@ footer span,
 .empty { color: var(--muted); }
 .campaign-banner a {
   background: var(--accent);
-  border-radius: 8px;
-  color: #010102;
+  border-radius: var(--radius-action);
+  color: var(--on-accent);
   font-size: 13px;
   font-weight: 600;
   padding: 7px 10px;
@@ -46,22 +88,26 @@ footer span,
   display: grid;
   gap: 18px;
   margin: 0 auto;
-  max-width: 680px;
+  max-width: var(--shell-width);
   min-height: calc(100vh - 104px);
-  padding: 56px 18px 32px;
+  padding: var(--shell-padding);
 }
 .profile {
+  background: var(--profile-bg);
+  border: var(--profile-border);
+  border-radius: var(--radius-panel);
   display: grid;
   gap: 14px;
   justify-items: center;
+  padding: var(--profile-padding);
   text-align: center;
 }
 .avatar {
   border: 1px solid var(--hairline);
-  border-radius: 999px;
-  height: 112px;
+  border-radius: var(--radius-avatar);
+  height: var(--avatar-size);
   object-fit: cover;
-  width: 112px;
+  width: var(--avatar-size);
 }
 .avatar-fallback {
   align-items: center;
@@ -76,14 +122,16 @@ footer span,
   color: var(--accent);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: .08em;
+  letter-spacing: var(--eyebrow-spacing);
   margin: 0;
-  text-transform: uppercase;
+  text-transform: var(--eyebrow-transform);
 }
 h1 {
-  font-size: clamp(36px, 7vw, 64px);
+  font-family: var(--display-font);
+  font-size: var(--headline-size);
+  font-weight: var(--headline-weight);
   letter-spacing: 0;
-  line-height: 1;
+  line-height: var(--headline-leading);
   margin: 0;
 }
 .bio {
@@ -103,17 +151,18 @@ h1 {
 .links,
 .extra-actions {
   display: grid;
-  gap: 10px;
+  gap: var(--link-gap);
+  grid-template-columns: var(--link-grid);
 }
 .link-card,
 .campaign-button,
 .secondary-action {
   background: var(--surface);
   border: 1px solid var(--hairline);
-  border-radius: 8px;
+  border-radius: var(--radius-card);
   display: grid;
   gap: 4px;
-  padding: 14px 16px;
+  padding: var(--link-padding);
   text-decoration: none;
 }
 .link-card:hover,
@@ -124,6 +173,8 @@ h1 {
 }
 .campaign-button {
   border-color: var(--accent);
+  background: var(--cta-bg);
+  color: var(--cta-ink);
 }
 .secondary-action {
   text-align: center;
@@ -152,3 +203,38 @@ footer {
     padding-top: 36px;
   }
 }
+
+body.template-personal-brand-editorial-print .link-card,
+body.template-personal-brand-editorial-print .secondary-action {
+  border-width: 1px 0 0;
+}
+body.template-personal-brand-editorial-print .campaign-button {
+  padding: 14px 16px;
+}
+body.template-personal-brand-color-blocks .link-card:nth-child(odd),
+body.template-personal-brand-pinboard-pop .link-card:nth-child(odd) {
+  transform: translateY(8px);
+}
+body.template-personal-brand-command-dark .link-card small::before {
+  content: "cmd / ";
+}
+body.template-personal-brand-audio-stage .link-card,
+body.template-personal-brand-audio-stage .campaign-button,
+body.template-personal-brand-audio-stage .secondary-action {
+  box-shadow: rgba(0, 0, 0, .36) 0 8px 22px;
+}
+body.template-personal-brand-gradient-finance .profile,
+body.template-personal-brand-gallery-minimal .profile {
+  box-shadow: rgba(15, 23, 42, .06) 0 18px 42px;
+}
+@media (max-width: 640px) {
+  body.template-personal-brand-color-blocks .links,
+  body.template-personal-brand-pinboard-pop .links {
+    grid-template-columns: 1fr;
+  }
+  body.template-personal-brand-color-blocks .link-card:nth-child(odd),
+  body.template-personal-brand-pinboard-pop .link-card:nth-child(odd) {
+    transform: none;
+  }
+}
+
