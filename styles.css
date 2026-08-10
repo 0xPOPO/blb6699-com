@@ -182,17 +182,30 @@ footer span,
   align-items: center;
   color: var(--muted);
   display: flex;
-  font-size: 11px;
-  gap: 8px;
-  justify-content: space-between;
-  letter-spacing: 0;
+  gap: 7px;
+  justify-content: center;
   min-width: 0;
-  text-transform: uppercase;
+  opacity: 0.78;
 }
-.template-chip strong {
-  color: var(--accent);
-  font-size: 11px;
-  white-space: nowrap;
+.template-chip::before,
+.template-chip::after {
+  background: var(--hairline);
+  content: "";
+  height: 1px;
+  width: min(72px, 22%);
+}
+.template-chip span {
+  background: var(--accent);
+  border-radius: 999px;
+  display: block;
+  height: 6px;
+  width: 6px;
+}
+.template-chip span:nth-child(2) {
+  opacity: 0.55;
+}
+.template-chip span:nth-child(3) {
+  opacity: 0.28;
 }
 .panel {
   background: var(--panel-bg);
@@ -298,6 +311,11 @@ h1 {
   border-color: var(--accent);
   transform: translateY(-1px);
 }
+.brand-icon {
+  display: block;
+  height: 17px;
+  width: 17px;
+}
 .section-heading {
   display: grid;
   gap: 5px;
@@ -386,6 +404,10 @@ h1 {
   text-transform: uppercase;
   width: 34px;
 }
+.link-button-icon .brand-icon {
+  height: 16px;
+  width: 16px;
+}
 .campaign-button {
   background: var(--cta-bg);
   border-color: var(--cta-border);
@@ -410,21 +432,22 @@ h1 {
   --link-bg: var(--secondary-bg, transparent);
 }
 .profile-meta {
-  color: var(--muted);
-  display: flex;
-  flex-wrap: wrap;
+  color: var(--link-meta);
+  display: grid;
   font-size: 12px;
-  gap: 8px;
   justify-content: center;
-  line-height: 1.35;
+  line-height: 1.45;
   margin: 0;
+  min-width: 0;
+  text-align: center;
 }
 .profile-meta span {
+  background: color-mix(in srgb, var(--surface), transparent 18%);
   border: 1px solid var(--hairline);
-  border-radius: var(--radius-action);
+  border-radius: 999px;
   max-width: 100%;
   overflow-wrap: anywhere;
-  padding: 6px 10px;
+  padding: 7px 13px;
 }
 .details-panel {
   display: grid;
@@ -476,6 +499,24 @@ footer {
   justify-items: center;
   padding: 20px;
   text-align: center;
+}
+footer a {
+  color: inherit;
+  text-decoration: none;
+}
+footer a:hover {
+  color: var(--ink);
+}
+.footer-links {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: center;
+}
+.footer-love {
+  color: var(--muted);
+  margin: 0;
 }
 
 [data-skin="precision-dark"] {
@@ -560,5 +601,10 @@ footer {
   .link-button-icon {
     height: 30px;
     width: 30px;
+  }
+  .brand-icon,
+  .link-button-icon .brand-icon {
+    height: 15px;
+    width: 15px;
   }
 }
