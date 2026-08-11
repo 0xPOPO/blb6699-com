@@ -309,7 +309,12 @@ h1 {
 .social-icon:hover {
   background: var(--link-bg-hover);
   border-color: var(--accent);
+  color: var(--accent);
   transform: translateY(-1px);
+}
+.social-icon:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent), transparent 45%);
+  outline-offset: 2px;
 }
 .brand-icon {
   display: block;
@@ -440,11 +445,14 @@ h1 {
   margin: 0;
   min-width: 0;
   text-align: center;
+  width: 100%;
 }
 .profile-meta span {
   background: color-mix(in srgb, var(--surface), transparent 18%);
   border: 1px solid var(--hairline);
   border-radius: 999px;
+  box-sizing: border-box;
+  display: inline-block;
   max-width: 100%;
   overflow-wrap: anywhere;
   padding: 7px 13px;
