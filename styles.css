@@ -430,32 +430,40 @@ h1 {
   border-color: color-mix(in srgb, var(--cta-ink), transparent 72%);
 }
 .bio-button {
-  justify-self: var(--profile-align);
-  max-width: 340px;
+  justify-self: stretch;
+  max-width: none;
 }
 .secondary-action {
   --link-bg: var(--secondary-bg, transparent);
 }
 .profile-meta {
+  align-items: center;
   color: var(--link-meta);
-  display: grid;
+  display: flex;
   font-size: 12px;
   justify-content: center;
-  line-height: 1.45;
+  line-height: 1.35;
   margin: 0;
+  min-height: 32px;
   min-width: 0;
   text-align: center;
   width: 100%;
 }
 .profile-meta span {
+  align-items: center;
   background: color-mix(in srgb, var(--surface), transparent 18%);
   border: 1px solid var(--hairline);
   border-radius: 999px;
   box-sizing: border-box;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
   max-width: 100%;
+  min-height: 32px;
   overflow-wrap: anywhere;
-  padding: 7px 13px;
+  padding: 6px 14px;
+  text-wrap: balance;
+  white-space: normal;
+  width: fit-content;
 }
 .details-panel {
   display: grid;
