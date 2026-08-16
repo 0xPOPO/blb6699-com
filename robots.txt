@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.blb6699.com/sitemap.xml
